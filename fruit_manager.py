@@ -1,10 +1,15 @@
-inventaire = {
-    "bananes": 120,
-    "mangues": 85,
-    "ananas": 45,
-    "noix de coco": 60,
-    "papayes": 30,
-}
+import json
+
+
+def ouvrir_inventaire(path="inventaire.json"):
+    with open(path, mode="r", encoding="utf-8") as file:
+        inventaire = json.load(file)
+    return inventaire
+
+
+def ecrire_inventaire(inventaire, path="inventaire.json"):
+    with open(path, mode="w", encoding="utf-8") as file:
+        json.dump(inventaire, file, indent=4, ensure_ascii=False)
 
 
 def afficher_inventaire(inventaire):
@@ -24,6 +29,8 @@ def vendre(inventaire, fruit, quantite):
 
 
 if __name__ == "__main__":
+
+    inventaire = ouvrir_inventaire()
     afficher_inventaire(inventaire)
     recolter(inventaire, "bananes", 10)
     afficher_inventaire(inventaire)
