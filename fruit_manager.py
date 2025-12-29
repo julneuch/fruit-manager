@@ -58,5 +58,3 @@ if __name__ == "__main__":
     ecrire_tresorerie(tresorerie)
     afficher_inventaire(inventaire)
     afficher_tresorerie(tresorerie)
-
-##saf
