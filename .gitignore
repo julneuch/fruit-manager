@@ -1,3 +1,4 @@
 data/*.json
 data/*.txt
 .venv/
+__pycache__/
