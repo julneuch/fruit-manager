@@ -1,6 +1,8 @@
 import streamlit as st
 from fruit_manager import *
 
+st.set_page_config(page_title="Dashboard de la plantation", layout="wide")
+
 st.title("Dashboard de la plantation")
 
 inventaire = ouvrir_inventaire()
