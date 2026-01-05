@@ -1,30 +1,63 @@
 import json
+import os
+
+DATA_DIR = "data"
+PRIX_PATH = os.path.join(DATA_DIR, "prix.json")
+INVENTAIRE_PATH = os.path.join(DATA_DIR, "inventaire.json")
+TRESORERIE_PATH = os.path.join(DATA_DIR, "tresorerie.txt")
+
+if not os.path.exists(DATA_DIR):
+    os.makedirs(DATA_DIR)
 
 
-def ouvrir_inventaire(path="data/inventaire.json"):
+def ouvrir_inventaire(path=INVENTAIRE_PATH):
+    if not os.path.exists(path):
+        inventaire = {
+            "bananes": 150,
+            "mangues": 200,
+            "ananas": 50,
+            "noix de coco": 60,
+            "papayes": 20,
+        }
+        with open(path, mode="w", encoding="utf-8") as file:
+            json.dump(inventaire, file, indent=4, ensure_ascii=False)
     with open(path, mode="r", encoding="utf-8") as file:
         inventaire = json.load(file)
     return inventaire
 
 
-def ecrire_inventaire(inventaire, path="data/inventaire.json"):
+def ecrire_inventaire(inventaire, path=INVENTAIRE_PATH):
     with open(path, mode="w", encoding="utf-8") as file:
         json.dump(inventaire, file, indent=4, ensure_ascii=False)
 
 
-def ouvrir_prix(path="data/prix.json"):
+def ouvrir_prix(path=PRIX_PATH):
+    if not os.path.exists(path):
+        prix = {
+            "bananes": 2,
+            "mangues": 10,
+            "ananas": 5,
+            "noix de coco": 7,
+            "papayes": 9,
+        }
+        with open(path, mode="w", encoding="utf-8") as file:
+            json.dump(prix, file, indent=4, ensure_ascii=False)
     with open(path, mode="r", encoding="utf-8") as file:
         prix = json.load(file)
     return prix
 
 
-def ouvrir_tresorerie(path="data/tresorerie.txt"):
+def ouvrir_tresorerie(path=TRESORERIE_PATH):
+    if not os.path.exists(path):
+        tresorerie = 1000
+        with open(path, mode="w", encoding="utf-8") as file:
+            file.write(str(tresorerie))
     with open(path, mode="r", encoding="utf-8") as file:
         tresorerie = int(file.readline())
     return tresorerie
 
 
-def ecrire_tresorerie(tresorerie, path="data/tresorerie.txt"):
+def ecrire_tresorerie(tresorerie, path=TRESORERIE_PATH):
     with open(path, mode="w", encoding="utf-8") as file:
         file.write(str(tresorerie))
 
