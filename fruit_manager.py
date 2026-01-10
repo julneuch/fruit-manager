@@ -63,6 +63,7 @@ def ecrire_tresorerie(tresorerie, path=TRESORERIE_PATH):
 
 
 def afficher_tresorerie(tresorerie):
+    
     print(f"💰 Trésrorie : {tresorerie}")
 
 
@@ -78,6 +79,8 @@ def recolter(inventaire, fruit, quantite):
 
 
 def vendre(inventaire, fruit, quantite, tresorerie, prix):
+    if inventaire.get(fruit, 0) < quantite:
+        quantite = inventaire.get(fruit, 0)
     inventaire[fruit] = inventaire.get(fruit, 0) - quantite
     tresorerie += prix.get(fruit, 0) * quantite
     print(f"💰 vendu {quantite} {fruit} supplémentaires ")
