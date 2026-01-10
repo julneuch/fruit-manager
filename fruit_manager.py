@@ -34,11 +34,11 @@ def ecrire_inventaire(inventaire, path=INVENTAIRE_PATH):
 def ouvrir_prix(path=PRIX_PATH):
     if not os.path.exists(path):
         prix = {
-            "bananes": 2,
-            "mangues": 10,
-            "ananas": 5,
+            "bananes": 8,
+            "mangues": 15,
+            "ananas": 6,
             "noix de coco": 7,
-            "papayes": 9,
+            "papayes": 11,
         }
         with open(path, mode="w", encoding="utf-8") as file:
             json.dump(prix, file, indent=4, ensure_ascii=False)
